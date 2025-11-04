@@ -10,6 +10,7 @@ const { connectDatabase } = require('./config/database');
 const authRoutes = require('./routes/auth');
 const todoRoutes = require('./routes/todos');
 const indexRoutes = require('./routes/index');
+const apiRoutes = require('./routes/api');
 
 const app = express();
 
@@ -37,7 +38,7 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24, // 1 giorno
+      maxAge: 1000 * 60 * 60 * 24 // 1 giorno
     },
     store: MongoStore.create({
       mongoUrl: MONGODB_URI,
@@ -57,6 +58,7 @@ app.use((req, res, next) => {
 app.use('/', indexRoutes);
 app.use('/', authRoutes);
 app.use('/todos', todoRoutes);
+app.use('/api', apiRoutes);
 
 app.use((req, res) => {
   res.status(404).render('404', {
@@ -64,7 +66,8 @@ app.use((req, res) => {
   });
 });
 
-app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+app.use((err, req, res, next) => {
+  // eslint-disable-line no-unused-vars
   console.error('Errore non gestito:', err);
   res.status(500).render('500', {
     title: 'Errore del server'

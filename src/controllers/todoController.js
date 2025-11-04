@@ -31,7 +31,7 @@ async function createTodo(req, res) {
     req.flash('success', 'Attività creata con successo.');
   } catch (error) {
     console.error('Errore durante la creazione del todo:', error);
-    req.flash('error', 'Non è stato possibile creare l\'attività.');
+    req.flash('error', "Non è stato possibile creare l'attività.");
   }
 
   res.redirect('/todos');
@@ -47,11 +47,11 @@ async function toggleTodo(req, res) {
     } else {
       todo.completed = !todo.completed;
       await todo.save();
-      req.flash('success', 'Stato dell\'attività aggiornato.');
+      req.flash('success', "Stato dell'attività aggiornato.");
     }
   } catch (error) {
-    console.error('Errore durante l\'aggiornamento del todo:', error);
-    req.flash('error', 'Impossibile aggiornare l\'attività.');
+    console.error("Errore durante l'aggiornamento del todo:", error);
+    req.flash('error', "Impossibile aggiornare l'attività.");
   }
 
   res.redirect('/todos');
@@ -64,8 +64,8 @@ async function deleteTodo(req, res) {
     await Todo.deleteOne({ _id: id, owner: req.session.user.id });
     req.flash('success', 'Attività eliminata.');
   } catch (error) {
-    console.error('Errore durante l\'eliminazione del todo:', error);
-    req.flash('error', 'Impossibile eliminare l\'attività.');
+    console.error("Errore durante l'eliminazione del todo:", error);
+    req.flash('error', "Impossibile eliminare l'attività.");
   }
 
   res.redirect('/todos');
