@@ -1,0 +1,9 @@
+    <% if (messages) { %>
+    <div class="container">
+      <% Object.entries(messages).forEach(([type, alerts]) => { %>
+      <% alerts.forEach((message) => { %>
+      <div class="alert alert--<%= type %>"><%= message %></div>
+      <% }); %>
+      <% }); %>
+    </div>
+    <% } %>

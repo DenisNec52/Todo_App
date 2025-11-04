@@ -1,0 +1,30 @@
+<%- include('partials/head', { title }) %>
+<%- include('partials/header') %>
+<%- include('partials/flash') %>
+
+<main class="container hero">
+  <div class="hero__content">
+    <h1>Organizza le tue attività</h1>
+    <p>
+      Gestisci le tue cose da fare in un unico posto. Registrati per iniziare a creare
+      liste personalizzate e rimanere sempre al passo con i tuoi obiettivi.
+    </p>
+    <div class="hero__actions">
+      <a class="btn" href="/register">Crea un account</a>
+      <a class="btn btn--ghost" href="/login">Ho già un account</a>
+    </div>
+  </div>
+  <div class="hero__illustration" aria-hidden="true">
+    <span class="hero__badge">✓</span>
+    <div class="hero__card">
+      <h3>Oggi</h3>
+      <ul>
+        <li>Scrivere il report settimanale</li>
+        <li>Allenamento serale</li>
+        <li>Chiamare il cliente ACME</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>
