@@ -2,6 +2,8 @@
 
 Applicazione ToDo full-stack con autenticazione utenti basata su Node.js, Express, MongoDB ed EJS. Permette di registrarsi, accedere e gestire liste di attività personali in modo sicuro tramite sessioni persistenti.
 
+In aggiunta all'interfaccia server-side è ora disponibile un client opzionale sviluppato in React + React-Bootstrap sotto la cartella `client/`, pensato per chi preferisce un'esperienza single-page application.
+
 ## Requisiti
 
 - Node.js 18+
@@ -54,12 +56,15 @@ L'applicazione sarà disponibile all'indirizzo `http://localhost:3000`.
 ```
 src/
 ├── config/          # Configurazioni (es. database)
-├── controllers/     # Logica applicativa per auth e todo
+├── controllers/     # Logica applicativa per auth, todo e API
 ├── middleware/      # Middleware personalizzati
 ├── models/          # Modelli Mongoose (User, Todo)
-├── routes/          # Definizione delle rotte Express
+├── routes/          # Definizione delle rotte Express e API JSON
 ├── views/           # Template EJS
 └── server.js        # Entry point dell'applicazione
+client/
+├── public/          # HTML di ingresso per Vite
+└── src/             # Codice React e componenti
 public/
 └── css/             # Stili globali
 ```
@@ -68,6 +73,25 @@ public/
 
 - `npm run dev` – avvia il server in modalità sviluppo
 - `npm start` – avvia il server in modalità produzione
+
+### Client React
+
+Per utilizzare l'interfaccia React (facoltativa):
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+Durante lo sviluppo Vite inoltra automaticamente le chiamate API verso il backend Express (porta 3000 di default). Per creare una build ottimizzata eseguire `npm run build` nella cartella `client`.
+
+All'interno della cartella `client` sono disponibili anche gli script:
+
+- `npm run lint` – verifica lo stile del codice React
+- `npm run format` – formatta automaticamente file JavaScript/JSX/CSS tramite Prettier
+
+L'interfaccia single-page utilizza React-Bootstrap, animazioni CSS dedicate e placeholder dinamici per rendere più fluide le transizioni tra login, registrazione e dashboard.
 
 ## Licenza
 
