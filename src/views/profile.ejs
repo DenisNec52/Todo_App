@@ -1,0 +1,21 @@
+<%- include('partials/head', { title }) %>
+<%- include('partials/header') %>
+<%- include('partials/flash') %>
+
+<main class="container">
+  <section class="card profile">
+    <h1>Profilo</h1>
+    <dl class="profile__list">
+      <div>
+        <dt>Nome</dt>
+        <dd><%= user?.name %></dd>
+      </div>
+      <div>
+        <dt>Email</dt>
+        <dd><%= user?.email %></dd>
+      </div>
+    </dl>
+  </section>
+</main>
+
+<%- include('partials/footer') %>

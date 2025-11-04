@@ -1,0 +1,27 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/header') %>
+<%- include('../partials/flash') %>
+
+<main class="container auth">
+  <section class="card">
+    <h1>Accedi</h1>
+    <p class="text-muted">Inserisci le tue credenziali per accedere alle tue attività.</p>
+    <form action="/login" method="post" class="form">
+      <div class="form__group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="<%= values?.email || '' %>" required />
+      </div>
+      <div class="form__group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <button class="btn" type="submit">Accedi</button>
+    </form>
+    <p class="text-muted text-center">
+      Non hai ancora un account?
+      <a href="/register">Registrati</a>
+    </p>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

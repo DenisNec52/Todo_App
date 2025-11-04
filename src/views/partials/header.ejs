@@ -1,0 +1,18 @@
+    <header class="navbar">
+      <div class="container navbar__inner">
+        <a class="navbar__brand" href="/">ToDo App</a>
+        <nav class="navbar__nav">
+          <% if (user) { %>
+          <span class="navbar__user">Ciao, <strong><%= user.name %></strong></span>
+          <a class="btn btn--ghost" href="/todos">Le mie attività</a>
+          <a class="btn btn--ghost" href="/profile">Profilo</a>
+          <form class="navbar__logout" action="/logout" method="post">
+            <button class="btn btn--danger" type="submit">Esci</button>
+          </form>
+          <% } else { %>
+          <a class="btn btn--ghost" href="/login">Accedi</a>
+          <a class="btn" href="/register">Registrati</a>
+          <% } %>
+        </nav>
+      </div>
+    </header>

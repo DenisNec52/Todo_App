@@ -1,0 +1,58 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/header') %>
+<%- include('../partials/flash') %>
+
+<main class="container todos">
+  <section class="todos__create card">
+    <h1>Le mie attività</h1>
+    <form action="/todos" method="post" class="form form--inline">
+      <div class="form__group">
+        <label for="title">Titolo</label>
+        <input type="text" id="title" name="title" placeholder="Es. Chiamare il cliente" required />
+      </div>
+      <div class="form__group">
+        <label for="description">Descrizione</label>
+        <textarea id="description" name="description" rows="2" placeholder="Aggiungi dettagli opzionali"></textarea>
+      </div>
+      <div class="form__group">
+        <label for="dueDate">Scadenza</label>
+        <input type="date" id="dueDate" name="dueDate" />
+      </div>
+      <button class="btn" type="submit">Aggiungi</button>
+    </form>
+  </section>
+
+  <section class="todos__list">
+    <% if (todos.length === 0) { %>
+    <p class="text-muted">Non hai ancora creato nessuna attività.</p>
+    <% } else { %>
+    <ul class="todo-list">
+      <% todos.forEach((todo) => { %>
+      <li class="todo-card <%= todo.completed ? 'todo-card--completed' : '' %>">
+        <div class="todo-card__content">
+          <form action="/todos/<%= todo._id %>/toggle" method="post">
+            <button class="todo-card__checkbox" type="submit" title="Segna come completata">
+              <span><%= todo.completed ? '✓' : '' %></span>
+            </button>
+          </form>
+          <div>
+            <h2><%= todo.title %></h2>
+            <% if (todo.description) { %>
+            <p><%= todo.description %></p>
+            <% } %>
+            <% if (todo.dueDate) { %>
+            <p class="todo-card__due">Scade il <%= new Date(todo.dueDate).toLocaleDateString('it-IT') %></p>
+            <% } %>
+          </div>
+        </div>
+        <form action="/todos/<%= todo._id %>/delete" method="post">
+          <button class="btn btn--danger" type="submit">Elimina</button>
+        </form>
+      </li>
+      <% }); %>
+    </ul>
+    <% } %>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
