@@ -10,6 +10,7 @@ const { connectDatabase } = require('./config/database');
 const authRoutes = require('./routes/auth');
 const todoRoutes = require('./routes/todos');
 const indexRoutes = require('./routes/index');
+const apiRoutes = require('./routes/api');
 
 const app = express();
 
@@ -57,6 +58,7 @@ app.use((req, res, next) => {
 app.use('/', indexRoutes);
 app.use('/', authRoutes);
 app.use('/todos', todoRoutes);
+app.use('/api', apiRoutes);
 
 app.use((req, res) => {
   res.status(404).render('404', {
