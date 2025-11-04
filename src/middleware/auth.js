@@ -3,7 +3,7 @@ function ensureAuthenticated(req, res, next) {
     return next();
   }
 
-  req.flash('warning', 'Devi effettuare l\'accesso per continuare.');
+  req.flash('warning', "Devi effettuare l'accesso per continuare.");
   return res.redirect('/login');
 }
 
