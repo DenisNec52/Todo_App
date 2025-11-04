@@ -78,7 +78,8 @@ import, variable, function, and JSX fragment.
 - Imports React state and effect utilities alongside React Router components and
   React-Bootstrap layout primitives.
 - Pulls the `useAuth` hook to access authentication data.
-- Imports `AuthForms`, `TodoDashboard`, and API helpers for session management.
+- Imports `AuthForms`, `TodoDashboard`, the `RegisterPage`, and API helpers for
+  session management.
 - `AppShell` component:
   - Provides a consistent layout containing the navbar, optional status messages
     (implemented with `<Alert>`), and a spinner while the app bootstraps.
@@ -94,8 +95,10 @@ import, variable, function, and JSX fragment.
   - Declares `handleLogout` to call the API, clear the context, and show a success
     or error message accordingly.
   - Renders the router with three primary routes:
-    - `/login` and `/register` render `AuthForms` when logged out, otherwise they
-      redirect to `/todos`.
+    - `/login` mostra il form di autenticazione quando l'utente non è connesso,
+      altrimenti reindirizza a `/todos`.
+    - `/register` delega alla `RegisterPage` per offrire introduzione e form di
+      registrazione; se l'utente è già autenticato lo rimanda a `/todos`.
     - `/todos` displays the `TodoDashboard` when authenticated, otherwise it
       redirects to `/login`.
     - The catch-all route sends users to the appropriate screen based on
@@ -133,3 +136,12 @@ import, variable, function, and JSX fragment.
 - Renders a card containing the add form, error text, loading indicator, and a
   list group with each todo showing title, completion state, and a delete button;
   also renders an empty state message when there are no todos.
+
+## `src/pages/RegisterPage.jsx`
+- Imports React along with Bootstrap card and list components to compose the
+  layout.
+- Uses `AuthForms` in registration mode to reuse validation and submission
+  logic.
+- Wraps the form with an introductory card that highlights the benefits and
+  passaggi principali della registrazione, aiutando gli utenti a capire cosa
+  aspettarsi prima di compilare i campi.

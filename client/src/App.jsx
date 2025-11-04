@@ -9,6 +9,7 @@ import Alert from 'react-bootstrap/Alert';
 import { useAuth } from './context/AuthContext';
 import AuthForms from './components/AuthForms';
 import TodoDashboard from './components/TodoDashboard';
+import RegisterPage from './pages/RegisterPage';
 import { getCurrentUser, logout } from './api';
 
 function AppShell({ children, onLogout, isLoading, statusMessage }) {
@@ -86,7 +87,9 @@ export default function App() {
         />
         <Route
           path="/register"
-          element={user ? <Navigate to="/todos" replace /> : <AuthForms onLogin={login} mode="register" />}
+          element={
+            user ? <Navigate to="/todos" replace /> : <RegisterPage onLogin={login} />
+          }
         />
         <Route
           path="/todos"
